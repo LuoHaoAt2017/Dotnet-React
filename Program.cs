@@ -12,6 +12,6 @@ public class Program
 {
 	public static void Main()
 	{
-		csharp_advanced_programming.Chapter1.Chapter1.Test();
+		csharp_advanced_programming.Chapter1.Chapter1.Test4();
 	}
 }
