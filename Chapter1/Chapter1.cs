@@ -91,6 +91,18 @@ namespace csharp_advanced_programming.Chapter1
 				Console.WriteLine(func());
 			}
 		}
+
+		public static void Test5()
+		{
+			CarDealer carDealer = new CarDealer();
+			Consumer consumer1 = new Consumer("1");
+			Consumer consumer2 = new Consumer("1");
+			Consumer consumer3 = new Consumer("1");
+			carDealer.NewCarEvent += consumer1.NewCarIsHere;
+			carDealer.NewCarEvent += consumer2.NewCarIsHere;
+			carDealer.NewCarEvent += consumer3.NewCarIsHere;
+			carDealer.NewCar("BENTIAN");
+		}
 	}
 
 	class MathOperation
@@ -104,6 +116,47 @@ namespace csharp_advanced_programming.Chapter1
 		public static void Two(int value)
 		{
 			Console.WriteLine($"two: {value}");
+		}
+	}
+
+	public class CarInfoEventArgs: EventArgs
+	{
+		public string Car { get; private set; }
+
+		public CarInfoEventArgs(string args)
+		{
+			this.Car = args;
+		}
+	}
+
+	public class CarDealer
+	{
+		public event EventHandler<CarInfoEventArgs> NewCarInfo;
+
+		public void NewCar(string car)
+		{
+			RaiseNewCarInfo(car);
+		}
+
+		private void RaiseNewCarInfo(string car)
+		{
+			EventHandler<CarInfoEventArgs> eventHandler = NewCarInfo;
+			eventHandler?.Invoke(this, new CarInfoEventArgs(car));
+		}
+	}
+
+	public class Consumer
+	{
+		private string name;
+
+		public Consumer(string name)
+		{
+			this.name = name;
+		}
+
+		public void NewCarIsHere(object? sender, CarInfoEventArgs e)
+		{
+			Console.WriteLine($"{this.name}, {e.Car} is Coming.");
 		}
 	}
 }
