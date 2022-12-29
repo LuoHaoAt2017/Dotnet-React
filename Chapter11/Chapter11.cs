@@ -233,5 +233,23 @@ namespace csharp_advanced_programming.Chapter11
 				Console.WriteLine($"{str}");
 			}
 		}
+
+		/// <summary>
+		/// 按照赢得比赛的次数降序排列
+		/// </summary>
+		public static void LinqQuery7()
+		{
+			var racers = from r in Formulal.GetRacerChampions()
+						 orderby r.Wins, r.Country, r.FirstName descending
+						 select r;
+		}
+
+		/// <summary>
+		/// 按照赢得比赛的次数降序排列，获取前10名。
+		/// </summary>
+		public static void LinqQuery8()
+		{
+			var result = Formulal.GetRacerChampions().OrderByDescending(r => r.Wins).Select((r) => r).Take(10);
+		}
 	}
 }

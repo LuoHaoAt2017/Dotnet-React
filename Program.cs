@@ -1,10 +1,10 @@
 ﻿
-using csharp_advanced_programming.Chapter11;
+using csharp_advanced_programming.Chapter34;
 
 public class Program
 {
 	public static void Main()
 	{
-		csharp_advanced_programming.Chapter11.Chapter11.Test();
+		Chapter.Test();
 	}
 }
