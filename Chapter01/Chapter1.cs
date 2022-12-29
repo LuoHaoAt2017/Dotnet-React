@@ -8,9 +8,9 @@ using System.Threading.Tasks;
  * 
  * 
  */
-namespace csharp_advanced_programming.Chapter1
+namespace csharp_advanced_programming.Chapter01
 {
-	internal class Chapter1
+	internal class Chapter01
 	{
 		public static void Test()
 		{
@@ -98,9 +98,9 @@ namespace csharp_advanced_programming.Chapter1
 			Consumer consumer1 = new Consumer("1");
 			Consumer consumer2 = new Consumer("1");
 			Consumer consumer3 = new Consumer("1");
-			carDealer.NewCarEvent += consumer1.NewCarIsHere;
-			carDealer.NewCarEvent += consumer2.NewCarIsHere;
-			carDealer.NewCarEvent += consumer3.NewCarIsHere;
+			//carDealer.NewCarEvent += consumer1.NewCarIsHere;
+			//carDealer.NewCarEvent += consumer2.NewCarIsHere;
+			//carDealer.NewCarEvent += consumer3.NewCarIsHere;
 			carDealer.NewCar("BENTIAN");
 		}
 	}
